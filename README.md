@@ -9,6 +9,7 @@
     But only FVTA can be used to get the complete Rayleigh wave dispersion curves.
     
 2. This module contains the following subroutines:
+<font size=10>
     |Number|Subroutine name|input|output|
     |:----:|:--------------|:----|:-----|
     |[1]|FVTA_c(Vr,mods,freq,nf,nv)            |mods, freq, nf and nv         |Vr(nf,nv)|
@@ -17,3 +18,4 @@
     |4  |FVTA_bisection(flag,x,a,b,f,mods)     |mods, f and Search range[a,b] |dichotomy search root result, if there is root, flag = 1, root is x, otherwise flag = 0, x = a.|
     |5  |GRTA_s(Fx,mods,f,v)                   |mods, f and v                 |Fx(0:mods%ceng-1)|
     |6  |GRTA_e(eigen,mods,f,nroot)            |mods, f and nroot             |eigen|
+</font>
