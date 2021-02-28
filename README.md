@@ -1,5 +1,5 @@
 # **Dispersion**
-> **This module is used to calculate Rayleigh wave dispersion curve and dispersion function value and other related content.**
+> **This project contains a module for calculating Rayleigh wave dispersion curve and dispersion function value and other related content.**
 
 ## Introduction
 1. This module contains three forward algorithms:
