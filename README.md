@@ -1,5 +1,5 @@
-# **Dispersion**  v1.0
-**This module is used to calculate Rayleigh surface wave dispersion curve and dispersion function value and other related content.**
+# **Dispersion**
+**This module is used to calculate Rayleigh wave dispersion curve and dispersion function value and other related content.**
 
 ## Introduction
 1. This module contains three forward algorithms:
@@ -20,7 +20,7 @@
     |6     |GRTA_e(eigen,mods,f,nroot)            |mods, f and nroot             |eigen             |This program can be called externally.|
     |7     |Haskell_s(Fx,mods,f,v)                |mods, f and v                 |Fx                |This program can be called externally.|
     |8     |Crfinder(vs1,vp1)                     |vs1 and vp1                   |rayv              |     |
-    |9     |Rayleigh(R,DR,c,v1,v2)                |c and vs1 and vp1             |R and DR          |Rayleigh wave equation. It is a subroutine of Crfinder.|
+    |9     |Rayleigh(R,DR,c,v1,v2)                |c, v1 and v2                  |R and DR          |Rayleigh wave equation. It is a subroutine of Crfinder.|
     |10    |rough_distance(dc,mods,f)             |mods and f                    |dc                |     |
     |11    |fine_distance(dcout,ndc,mods,f,c1,dc) |mods, f, dc and c1            |ndc and dcout(ndc)|     |
     |12    |ncf(mods,f,v)                         |mods, f and v                 |ncf               |     |
@@ -48,3 +48,10 @@
     |17    |ndc  |A scalar number of interval points in dc.|
     |18    |dcout|Distance between fine search interval points.|
     |19    |ncf  |Prediction number of roots at frequency(f) and phase velocity(v).|
+
+## Usage
+1. Intel(R) Visual Fortran is recommended.
+2. Other compilers can be used, but the subroutine GRTA_e may not be compiled, you can consider commenting or modifying the subroutine's write statement to file "Eigen.txt" to make the compilation successful.
+3. "Call FVTA_c(Vr,mods,freq,nf,nv)" is a Fortran program statement that calls the module to obtain the model dispersion curve. Other usages are similar. But before that, you must declare each variable in accordance with the definition of the module.
+
+## Licence
