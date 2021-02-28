@@ -55,4 +55,4 @@
 3. "Call FVTA_c(Vr,mods,freq,nf,nv)" is a Fortran program statement that calls the module to obtain the model dispersion curve. Other usages are similar. But before that, you must declare each variable in accordance with the definition of the module.
 
 ## Licence
-> Dispersion is licensed under the LGPL v3.0, i.e. it is licensed with the GPL v3.0 and the additional set of permissions granted by the LGPL v3.0 license. See the [GNU General Public License]() for more details.
+> Dispersion is licensed under the LGPL v3.0, i.e. it is licensed with the GPL v3.0 and the additional set of permissions granted by the LGPL v3.0 license. See the [GNU General Public License](https://github.com/yuanxzo/Dispersion/blob/main/LICENSE) for more details.
