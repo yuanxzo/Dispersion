@@ -1,13 +1,13 @@
 # **Dispersion**
-**This module is used to calculate Rayleigh wave dispersion curve and dispersion function value and other related content.**
+> **This module is used to calculate Rayleigh wave dispersion curve and dispersion function value and other related content.**
 
 ## Introduction
 1. This module contains three forward algorithms:
-    - Fast vector-transfer algorithm, corresponding to the prefix of program name: FVTA,
-    - Generalized reflection and transmission coefficient algorithm, corresponding to the prefix of program name: GRTA,
-    - Modified Thomson-Haskell algorithm，corresponding to the prefix of program name：Haskell.
-    
-    But only FVTA can be used to get the complete Rayleigh wave dispersion curves.
+>   - Fast vector-transfer algorithm, corresponding to the prefix of program name: FVTA,
+>   - Generalized reflection and transmission coefficient algorithm, corresponding to the prefix of program name: GRTA,
+>   - Modified Thomson-Haskell algorithm，corresponding to the prefix of program name：Haskell.
+>    
+>   But only FVTA can be used to get the complete Rayleigh wave dispersion curves.
     
 2. This module contains the following subroutines:
     |Number|Subroutine name                       |input                         |output            |notes|
@@ -50,9 +50,9 @@
     |19    |ncf  |Prediction number of roots at frequency(f) and phase velocity(v).|
 
 ## Usage
-1. Intel(R) Visual Fortran is recommended.
-2. Other compilers can be used, but the subroutine GRTA_e may not be compiled, you can consider commenting or modifying the subroutine's write statement to file "Eigen.txt" to make the compilation successful.
-3. "Call FVTA_c(Vr,mods,freq,nf,nv)" is a Fortran program statement that calls the module to obtain the model dispersion curve. Other usages are similar. But before that, you must declare each variable in accordance with the definition of the module.
+> 1. Intel(R) Visual Fortran is recommended.
+> 2. Other compilers can be used, but the subroutine GRTA_e may not be compiled, you can consider commenting or modifying the subroutine's write statement to file "Eigen.txt" to make the compilation successful.
+> 3. "Call FVTA_c(Vr,mods,freq,nf,nv)" is a Fortran program statement that calls the module to obtain the model dispersion curve. Other usages are similar. But before that, you must declare each variable in accordance with the definition of the module.
 
 ## Licence
 > Dispersion is licensed under the LGPL v3.0, i.e. it is licensed with the GPL v3.0 and the additional set of permissions granted by the LGPL v3.0 license. See the [GNU General Public License](https://github.com/yuanxzo/Dispersion/blob/main/LICENSE) for more details.
