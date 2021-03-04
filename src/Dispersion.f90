@@ -810,9 +810,9 @@ Contains
 	y(4,4) = a(3,3)*a11a22-a(3,2)*a11a23+a(3,1)*a12a23	
 
 	d = a(1,1)*y(1,1)+a(1,2)*y(2,1)+a(1,3)*y(3,1)+a(1,4)*y(4,1)
-        If ( abs(d).lt.epsi04 ) Then
-            d = epsi04
-        End If
+	If ( abs(d).lt.epsi04 ) Then
+	    d = epsi04
+	End If
 
 	Do j = 1, 4
 	   Do i = 1, 4
