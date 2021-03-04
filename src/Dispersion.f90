@@ -76,9 +76,9 @@ Module Dispersion
     Real(kind=8),parameter::pi=acos(-1.0d0)
     Real(kind=8)::rayv,minvs,maxvs      !The first layer Rayleigh wave velocity, minimum and maximum shear wave velocity of the model
     
-    !Generalized reflection transmission coefficients
+    ! Generalized reflection transmission coefficients
     Complex(kind=8)::Rud(2,2,0:layer),Rdu(2,2,layer),Tdd(2,2,layer),Tuu(2,2,layer),eye(2,2)
-	Complex(kind=8)::rs(layer),rp(layer),tt(layer),E11(2,2,layer),E12(2,2,layer),E21(2,2,layer),E22(2,2,layer)
+    Complex(kind=8)::rs(layer),rp(layer),tt(layer),E11(2,2,layer),E12(2,2,layer),E21(2,2,layer),E22(2,2,layer)
 
     ! The data structure of the layered model defined in the module.
     Type Model
