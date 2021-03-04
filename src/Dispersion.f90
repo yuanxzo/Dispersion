@@ -80,23 +80,23 @@ Module Dispersion
     Complex(kind=8)::Rud(2,2,0:layer),Rdu(2,2,layer),Tdd(2,2,layer),Tuu(2,2,layer),eye(2,2)
 	Complex(kind=8)::rs(layer),rp(layer),tt(layer),E11(2,2,layer),E12(2,2,layer),E21(2,2,layer),E22(2,2,layer)
 
-    !The data structure of the layered model defined in the module.
+    ! The data structure of the layered model defined in the module.
     Type Model
         Integer::ceng !Number of layers
         Real(kind=8)::vs(layer),vp(layer),dns(layer),thk(layer-1) !S-wave velocity, P-wave velocity, density and layer thickness
     End Type
     
-    !det Function：find the determinant of [real number, complex number] square matrix (n * n)
+    ! det Function：find the determinant of [real number, complex number] square matrix (n * n)
     Interface det
         Module procedure r_det,z_det
     End interface
-    !sqrt Function: Extended function for finding the square root. It can find the square root of integer and negative number.
+    ! sqrt Function: Extended function for finding the square root. It can find the square root of integer and negative number.
     Interface sqrt
         Module procedure int_sqrt,neg_sqrt
     End interface
 Contains
     
-	!The complete Rayleigh wave dispersion curves is obtained by FVTA
+    ! The complete Rayleigh wave dispersion curves is obtained by FVTA
     Subroutine FVTA_c(Vr,mods,freq,nf,nv)
         Type(Model)             :: mods
         Integer,intent(in)      :: nf,nv
@@ -115,7 +115,7 @@ Contains
         !$OMP End PARALLEL DO
     End Subroutine FVTA_c
     
-	!Fast vector-transfer algorithm(FVTA)
+    ! Fast vector-transfer algorithm(FVTA)
     Subroutine FVTA_s(Fx,mods,f,v)
         Type(model):: mods
         Real(kind=8),intent(out)::Fx  ! The value of the dispersion function of the FVTA
@@ -211,8 +211,8 @@ Contains
         Fx=Real(EE(5))
     End Subroutine FVTA_s
     
-    !Calculate the 1 to nroot roots of the model mod at a certain frequency f.
-	!The roots sorted by phase velocity from small to large.
+    ! Calculate the 1 to nroot roots of the model mods at a certain frequency f.
+    ! The roots sorted by phase velocity from small to large.
     Subroutine FVTA_Searchroot(root,mods,f,nroot)
         Type(Model)        ::mods
         Integer,intent(in) ::nroot
@@ -250,7 +250,7 @@ Contains
         End Do
     End Subroutine FVTA_Searchroot
     
-    !Bisection search root program
+    ! Bisection search root program
     Subroutine FVTA_bisection(flag,x,a,b,f,mods)
         Type(model):: mods
         Real(kind=8)::a,b,f,x,xeps,yeps,fa,fb,fc,dx,a1,a2,c,erro,fa1,fa2
@@ -327,7 +327,7 @@ Contains
         End If
     End Subroutine FVTA_bisection
     
-    !Generalized reflection and transmission coefficient algorithm
+    ! Generalized reflection and transmission coefficient algorithm
     Subroutine GRTA_s(Fx,mods,f,v)
         Type(model)::mods
         Complex(kind=8),intent(out)::Fx(0:mods%ceng-1) !Secular function values for all layers
@@ -346,7 +346,7 @@ Contains
         rp(1:mods%ceng)=sqrt(cmplx(k**2-(w/mods%vp(1:mods%ceng))**2.0d0))
         tt(1:mods%ceng)=k**2+rs**2
         miu(1:mods%ceng)=(mods%vs(1:mods%ceng)**2.0d0)*mods%dns(1:mods%ceng);
-		!miu=Real(mods%ceng)*miu/sum(miu)    
+	!miu=Real(mods%ceng)*miu/sum(miu)    
      
         E11(1,1,1:mods%ceng)=mods%vp(1:mods%ceng)*k*w1
         E11(1,2,1:mods%ceng)=mods%vs(1:mods%ceng)*rs*w1
@@ -533,7 +533,7 @@ Contains
         
     End Subroutine GRTA_e
     
-    !Modified Thomson-Haskell algorithm.
+    ! Modified Thomson-Haskell algorithm.
     Subroutine Haskell_s(Fx,mods,f,v)
         type(model)        ::mods
         Real(kind=8),intent(out)::Fx
@@ -590,7 +590,7 @@ Contains
 
         end do
 		
-		!To set the boundary matrix determined by buried surface
+	! To set the boundary matrix determined by buried surface
         VV(1,1)=1.0d0;                  VV(1,2)=s    
         VV(2,1)=r;                      VV(2,2)=1.0d0              
         VV(3,1)=2.0d0*miu(mods%ceng)*r; VV(3,2)=miu(mods%ceng)*t
@@ -601,7 +601,7 @@ Contains
         Fx=abs(real(temp(1,1)*temp(2,2)-temp(1,2)*temp(2,1)))
     End subroutine Haskell_s
 
-	!Get the Rayleigh wave velocity(rayv) under the high-frequency approximation of the first layer of medium
+    ! Get the Rayleigh wave velocity(rayv) under the high-frequency approximation of the first layer of medium
     Subroutine Crfinder(vs1,vp1)
         Real(kind=8)::vs1,vp1,tol_cr0,c,R,DR
         
@@ -628,7 +628,7 @@ Contains
         DR  = p2*( 8.0*p*( ps2 - 2.0*p2 ) + 8.0*p*sps*spp+ 4.0*(p2*p)*( spp/sps + sps/spp ))
     End Subroutine Rayleigh
 
-    !Get the rough search interval
+    ! Get the rough search interval
     Subroutine rough_distance(dc,mods,f)
         Type(Model):: mods
         Real(kind=8)::f,dc,fnv
@@ -636,7 +636,7 @@ Contains
         dc=(maxvs-minvs)/real(fnv)
     End Subroutine rough_distance
 
-    !The fine search interval is determined according to the rough search interval
+    ! The fine search interval is determined according to the rough search interval
     Subroutine fine_distance(dcout,ndc,mods,f,vin,dcin)
         Type(model)::mods
         Real(kind=8),intent(out)::dcout(20)
@@ -675,7 +675,7 @@ Contains
         End If
     End Subroutine fine_distance
     
-	!Prediction number of roots(ncf) at frequency(f) and phase velocity(v)
+    ! Prediction number of roots(ncf) at frequency(f) and phase velocity(v)
     Function ncf(mods,f,v)
         Type(model)::mods
         Real(kind=8)::ncf,v,f
@@ -686,7 +686,7 @@ Contains
     End Function ncf
     
     
-    !Determinant of x
+    ! Determinant of x
     Function r_det(x,n)
         Real(kind=8)::x(n,n),r_det
         Integer::n
@@ -726,7 +726,7 @@ Contains
         End If
     End Function z_det
     
-    !int_sqrt,neg_sqrt
+    ! int_sqrt,neg_sqrt
     Function int_sqrt(x)
         Complex(kind=8) ::int_sqrt
         Integer::x
