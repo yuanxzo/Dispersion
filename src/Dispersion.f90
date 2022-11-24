@@ -1,4 +1,4 @@
-!  Copyright (C) <2021>  <Bo Yang. Email:yuanxzo@qq.com>
+!  Copyright (C) <2021>  <Bo Yang. Email: b.yang@petalmail.com>
 !  
 !  This program is free software: you can redistribute it and/or modify
 !  it under the terms of the GNU General Public License as published by
